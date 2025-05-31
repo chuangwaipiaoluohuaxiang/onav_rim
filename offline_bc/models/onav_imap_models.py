@@ -17,10 +17,10 @@ class ImapEmbedding(nn.Module):
         super().__init__()
 
         map_cfg = model_config.MAP_ENCODER
-        if map_cfg.token_embed_type == 'single':
+        if map_cfg.token_embed_type == 'single': #默认配置文件中是single
             self.imap_token_embedding = nn.Embedding(1, model_config.hidden_size)
         elif map_cfg.token_embed_type == 'multi':
-            self.imap_token_embedding = nn.Embedding(map_cfg.imap_size**2, model_config.hidden_size)
+            self.imap_token_embedding = nn.Embedding(map_cfg.imap_size**2, model_config.hidden_size)。#imap_size=3
         else:
             raise NotImplementedError(f'unsupported imap token embed {map_cfg.token_embed_type}')
         
